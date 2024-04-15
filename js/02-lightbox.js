@@ -1,8 +1,9 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-const list = document.querySelector(".gallery");
+
 
 function imagePaletteItems() {
+    const list = document.querySelector(".gallery");
     for (const photo of galleryItems) {
         //creare tag img + atribute/clasa
         const image = document.createElement("img");
@@ -21,22 +22,21 @@ function imagePaletteItems() {
   
         //aranjare elemente
         elem.appendChild(link);
-        link.appendChild(image);
+        link.appendChild(image);    
         list.appendChild(elem);
 
         //Dezactivare comportament redirectionare/download
         link.addEventListener("click", (event) => {
         event.preventDefault();
         });
-        
-        const lightbox = new SimpleLightbox('.gallery a', {overlayOpacity:'0.4', navText:['&#10094;','&#10095;'], docClose:false,history:false, alertError:false});
-       
-        //const lightbox = new SimpleLightbox('.gallery a', { sourceAttr: 'href', overlay:'true', overlayOpacity:'0.7',nav:'true', navText:['<','>'], captionSelector:'img',close: 'true', closeText:'×'});
        
         
     }
+        //Animatie imagini 
+        const lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
  
 }
 
 imagePaletteItems();
 console.log(galleryItems);
+
